@@ -13,7 +13,7 @@ namespace NetSimple.Service.Services
     {
         TEntity? GeById(int id);
 
-        TEntity[] GetMany(int from = 0, int to = -1);
+        TEntity[] GetMany(int from = 0, int limit = -1);
 
         void DeleteById(int id);
 

@@ -38,14 +38,14 @@ namespace NetSimple.Service.Services
             return dbSet.Find(id);
         }
 
-        public virtual TEntity[] GetMany(int from = 0, int to = -1)
+        public virtual TEntity[] GetMany(int from = 0, int limit = -1)
         {
-            if(to < 0)
+            if(limit < 0)
             {
                 return dbSet.ToArray();
             }
 
-            return dbSet.Skip(from).Take(to - from + 1).ToArray();
+            return dbSet.Skip(from).Take(limit).ToArray();
         }
 
         public virtual TEntity Update(TEntity entity)

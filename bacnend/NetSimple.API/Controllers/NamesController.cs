@@ -8,11 +8,11 @@ namespace NetSimple.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class NameController : ControllerBase
+    public class NamesController : ControllerBase
     {
         INameService nameService;
 
-        public NameController(INameService nameService)
+        public NamesController(INameService nameService)
         {
             this.nameService = nameService;
         }
@@ -20,7 +20,7 @@ namespace NetSimple.API.Controllers
         [HttpGet]
         public PaginatedPresenter<Name> Get([FromQuery] PaginationParameters pagination)
         {
-            var data = nameService.GetMany(pagination.From, pagination.To);
+            var data = nameService.GetMany(pagination.From, pagination.Limit);
             var count = nameService.GetCount();
 
             return new PaginatedPresenter<Name>
@@ -49,7 +49,8 @@ namespace NetSimple.API.Controllers
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] UpdateNameDTO name)
         {
-            nameService.Update(new Name { 
+            nameService.Update(new Name 
+            { 
                 FirstName = name.FirstName,
                 LastName = name.LastName
             });
