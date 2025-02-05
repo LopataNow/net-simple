@@ -18,14 +18,14 @@ function Name() {
 
     const handleOnOk = () => {
         setCurrentPage(1);
-        setIsModalOpen(true);
+        setIsModalOpen(false);
     }
 
     return (
         <div className='name'>
             <div className='name-table-header'>
                 <Button type="primary" onClick={handleOpenModal}>
-                    Open Modal
+                    Add name
                 </Button>
             </div>
             <NameTable currentPage={currentPage} setCurrentPage={setCurrentPage} />
